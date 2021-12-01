@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const sauceRoutes = require('./routes/sauce');
 
 const app = express();
 
@@ -18,24 +19,7 @@ app.use((req, res, next) => {
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
-app.use((req, res, next) => {
-    console.log('requete recue')
-    next();
-});
+app.use('/api/sauce', sauceRoutes);
 
-app.use((req, res, next) => {
-    res.status(201);
-    next()
-});
-
-app.use((req, res, next) => {
-    res.json({message: 'votre requete a bien ete recue'});
-    next();
-});
-
-app.use((req, res, next) => {
-    console.log('reponse envoyé avec succes')
-    next();
-});
 
 module.exports = app;
