@@ -71,7 +71,7 @@ exports.likeSauce = (req, res) => {
                 .then(() => res.status(200).json({message: "+1 like ajouté à la sauce" }))
                 .catch((error) => res.status(400).json({error}));
             break;
-            //si like=0 alors on étudie les deux tableaux usersLiked et usersDisliked et on mets à jour les attributs likes et dislikes ainsi que les tableaux eux meme selon la présence de l'userId dans l'un des deux
+            //si like=0 alors on étudie les deux tableaux usersLiked, usersDisliked et on met à jour les attributs likes et dislikes ainsi que les tableaux eux meme selon la présence de l'userId dans l'un des deux
         case 0:
             //retourne le tableau correspondant a sauceId
             Sauce.findOne({_id: sauceId})
